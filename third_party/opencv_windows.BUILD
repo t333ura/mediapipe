@@ -22,7 +22,7 @@ config_setting(
 # All paths below are relative to the path defined in /WORKSPACE for "windows_opencv"
 # By default this path is C:\opencv\build (double \), but you can change this if necessary.
 
-OPENCV_VERSION = "460"  # 4.6.0
+OPENCV_VERSION = "455"  # 4.5.5
 
 cc_library(
     name = "opencv",
