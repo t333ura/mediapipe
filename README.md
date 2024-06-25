@@ -4,7 +4,7 @@
 
 A new MediaPipe build target has been added under [`/mediapipe/examples/desktop/libmp`](/mediapipe/examples/desktop/libmp). Using Bazel, you can build this target to create a shared library (`.so` on Linux, `.dll` on Windows), which you can then integrate - along with its [`.h` header file](/mediapipe/examples/desktop/libmp/libmp.h) - into any C++ application you wish.
 
-Compilation has been tested on Windows (MSVC 17.3.5) and Ubuntu 20.04 (GCC 9.4.0).
+Compilation has been tested on Windows (VS 2022 17.6.16, MSVC 19.36.32546) and Ubuntu 20.04 (GCC 9.4.0).
 
 Enormous thanks to [@asprecic](https://github.com/asprecic) for sharing [`libexample`](https://github.com/asprecic/mediapipe/blob/linux-lib-example/mediapipe/examples/desktop/libexample), which made LibMP possible!
 
@@ -18,7 +18,7 @@ Enormous thanks to [@asprecic](https://github.com/asprecic) for sharing [`libexa
     - `/third_party/opencv_linux.BUILD` (search for "OPENCV_VERSION")
     - `/WORKSPACE` (search for "linux_opencv")
 ### Windows
-- **NOTE:** If using Visual Studio, please use VS 2022 17.3.7 or below. There is a current bug in VS 2022 v17.4 and above that causes MediaPipe to fail to link/compile. See rajkundu/mediapipe#1 for more details.
+- **NOTE:** If using Visual Studio, please use VS 2022 17.6 or above. There is a bug in VS 2022 17.4 and 17.5 that causes MediaPipe to fail to link/compile. See rajkundu/mediapipe#1 for more details.
 - Bazel
 - OpenCV
     - Download pre-compiled binaries
@@ -59,6 +59,8 @@ Enormous thanks to [@asprecic](https://github.com/asprecic) for sharing [`libexa
 ## Notes
 - Unused OpenCV libraries are disabled in `/third_party/opencv_linux.BUILD`. If you need them, you can re-enable them to get them linked in the final binary too.
 - One recent breaking change to MediaPipe is that models (e.g., `.tflite` files) are no longer included in the repository itself. They are instead hosted on [Google Cloud Storage (GCS)](https://storage.googleapis.com/mediapipe-assets/). If your code is not working for some reason, you can manually clone an older version of [`google/mediapipe`](https://github.com/google/mediapipe) and copy the source `/mediapipe/models` and `/mediapipe/modules` folders over to your binary's location. See [cc6a2f7](https://github.com/google/mediapipe/tree/cc6a2f7af65977248b2a15f471503da2832f583a) for the last versions of these folders before deletion.
+- Bazel version 7.0.0 removes `apple_common.multi_arch_split`, resulting in the error `'apple_common' value has no field or method 'multi_arch_split'`. Using Bazel version 6 fixes the issue.
+- An error related to `local_execution_config_python` may be encountered when building on Windows in CMD using `build_libmp_win.bat`. This has been fixed by adding `BAZEL_SH` to the environmental variables and pointing it to MSYS2's `bash.exe`.
 
 ## Contributions
 Questions, suggestions, issues, pull requests, etc. are all welcome!
