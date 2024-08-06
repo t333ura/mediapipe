@@ -352,7 +352,7 @@ new_local_repository(
 new_local_repository(
     name = "windows_opencv",
     build_file = "@//third_party:opencv_windows.BUILD",
-    path = "..\\libopencv\\libopencv",
+    path = "..\\libcv\\libcv",
 )
 
 http_archive(
