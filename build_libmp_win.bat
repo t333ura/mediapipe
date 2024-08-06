@@ -20,7 +20,7 @@ bazelisk clean
 bazelisk build -c opt --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/libmp:libmp.dll --verbose_failures
 mkdir libmp
 copy mediapipe\examples\desktop\libmp\libmp.h libmp\libmp.h
-copy mediapipe\examples\desktop\libmp\libmp.dll.if.lib libmp\libmp.dll.if.lib
+copy bazel-bin\mediapipe\examples\desktop\libmp\libmp.dll.if.lib libmp\libmp.dll.if.lib
 copy bazel-bin\mediapipe\examples\desktop\libmp\libmp.dll libmp\libmp.dll
 xcopy /s /e /i bazel-bin\mediapipe\modules libmp\modules
 
