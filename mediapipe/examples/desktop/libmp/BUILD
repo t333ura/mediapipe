@@ -129,6 +129,7 @@ cc_binary(
     ],
     name = "libmp.so",
     deps = [":libmp_linux"],
+    data = BIN_DATA,
     linkshared = 1, ## Very important
     linkopts = ["-Wl,-soname,libmp.so"],
 )
@@ -138,6 +139,7 @@ cc_binary(
     ],
     name = "libmp.dylib",
     deps = [":libmp_macos"],
+    data = BIN_DATA,
     linkshared = 1, ## Very important
 )
 cc_binary(
@@ -146,6 +148,7 @@ cc_binary(
     ],
     name = "libmp.dll",
     deps = [":libmp_win"],
+    data = BIN_DATA,
     linkshared = 1, ## Very important
 )
 
@@ -158,8 +161,6 @@ cc_library(
     hdrs = ["libmp.h", "libmp_impl.h"],
     visibility = ["//visibility:public"],
     deps = LIB_DEPS,
-    data = BIN_DATA,
-    linkstatic = 1,
     alwayslink = 1,
 )
 cc_library(
@@ -171,8 +172,6 @@ cc_library(
     hdrs = ["libmp.h", "libmp_impl.h"],
     visibility = ["//visibility:public"],
     deps = LIB_DEPS,
-    data = BIN_DATA,
-    linkstatic = 1,
     alwayslink = 1,
 )
 cc_library(
@@ -184,8 +183,6 @@ cc_library(
     hdrs = ["libmp.h", "libmp_impl.h"],
     visibility = ["//visibility:public"],
     deps = LIB_DEPS,
-    data = BIN_DATA,
-    linkstatic = 1,
     alwayslink = 1,
     defines = ["COMPILING_DLL=1"],
 )
