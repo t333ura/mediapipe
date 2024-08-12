@@ -40,8 +40,6 @@ config_setting(
     },
 )
 
-
-
 cc_library(
     name = "opencv",
     srcs = select({
