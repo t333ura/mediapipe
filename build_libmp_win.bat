@@ -15,21 +15,21 @@ SET "BAZEL_WINSDK_FULL_VERSION=10.0.26100.0"
 SET "PYTHON_BIN_PATH=C:\\Python\\Python312\\python.exe"
 
 rmdir /s /q libmp
-mkdir libmp
-copy mediapipe\examples\desktop\libmp\libmp.h libmp\libmp.h
 
 bazelisk clean
-bazelisk build -c dbg --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/libmp:libmp.dll --verbose_failures
+bazelisk build --compilation_mode=dbg --define=MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/libmp:libmp.dll --verbose_failures
 mkdir libmp\debug
+copy mediapipe\examples\desktop\libmp\libmp.h libmp\debug\libmp.h
 copy bazel-bin\mediapipe\examples\desktop\libmp\libmp.dll.if.lib libmp\debug\libmp.dll.if.lib
 copy bazel-bin\mediapipe\examples\desktop\libmp\libmp.dll libmp\debug\libmp.dll
-xcopy /s /e /i bazel-bin\mediapipe\modules libmp\debug\modules
+copy bazel-bin\mediapipe\modules\selfie_segmentation\selfie_segmentation.tflite libmp\debug\selfie_segmentation.tflite
 
 bazelisk clean
-bazelisk build -c opt --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/libmp:libmp.dll --verbose_failures
+bazelisk build --compilation_mode=opt --define=MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/libmp:libmp.dll --verbose_failures
 mkdir libmp\release
+copy mediapipe\examples\desktop\libmp\libmp.h libmp\release\libmp.h
 copy bazel-bin\mediapipe\examples\desktop\libmp\libmp.dll.if.lib libmp\release\libmp.dll.if.lib
 copy bazel-bin\mediapipe\examples\desktop\libmp\libmp.dll libmp\release\libmp.dll
-xcopy /s /e /i bazel-bin\mediapipe\modules libmp\release\moduless
+copy bazel-bin\mediapipe\modules\selfie_segmentation\selfie_segmentation.tflite libmp\release\selfie_segmentation.tflite
 
 exit /b
