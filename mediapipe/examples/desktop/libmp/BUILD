@@ -141,6 +141,8 @@ cc_binary(
     deps = [":libmp_macos"],
     data = BIN_DATA,
     linkshared = 1, ## Very important
+    linkstatic = 1,
+    features = ["fully_static_link"],
 )
 cc_binary(
     target_compatible_with = [

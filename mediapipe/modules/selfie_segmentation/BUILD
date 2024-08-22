@@ -28,9 +28,9 @@ package(default_visibility = ["//visibility:public"])
 filegroup(
     name = "selected_selfie_segmentation_model_loader",
     srcs = select({
+        "//conditions:default": ["selfie_segmentation_model_loader.pbtxt"],
         "@platforms//os:macos": ["selfie_segmentation_model_loader_mac.pbtxt"],
         "@platforms//os:windows": ["selfie_segmentation_model_loader_win.pbtxt"],
-        "//conditions:default": ["selfie_segmentation_model_loader.pbtxt"],
     }),
 )
 
