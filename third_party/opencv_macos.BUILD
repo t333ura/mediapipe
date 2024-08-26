@@ -46,11 +46,11 @@ config_setting(
 cc_library(
     name = "opencv",
     srcs = select({
-        "//conditions:default": ["lib/libopencv_world.a"],
-        ":arm64_debug": ["arm64/debug/lib/libopencv_world.a"],
-        ":arm64_release": ["arm64/release/lib/libopencv_world.a"],
-        ":x86_64_debug": ["x86_64/debug/lib/libopencv_world.a"],
-        ":x86_64_release": ["x86_64/release/lib/libopencv_world.a"],
+        "//conditions:default": ["lib/libopencv_world.dylib"],
+        ":arm64_debug": ["arm64/debug/lib/libopencv_world.dylib"],
+        ":arm64_release": ["arm64/release/lib/libopencv_world.dylib"],
+        ":x86_64_debug": ["x86_64/debug/lib/libopencv_world.dylib"],
+        ":x86_64_release": ["x86_64/release/lib/libopencv_world.dylib"],
     }),
     hdrs = select({
         "//conditions:default": glob(["include/opencv4/opencv2/**/*.h*"]),

@@ -131,6 +131,8 @@ cc_binary(
     deps = [":libmp_linux"],
     data = BIN_DATA,
     linkshared = 1, ## Very important
+    linkstatic = 1,
+    features = ["fully_static_link"],
     linkopts = ["-Wl,-soname,libmp.so"],
 )
 cc_binary(
@@ -152,6 +154,8 @@ cc_binary(
     deps = [":libmp_win"],
     data = BIN_DATA,
     linkshared = 1, ## Very important
+    linkstatic = 1,
+    features = ["fully_static_link"],
 )
 
 cc_library(
