@@ -27,7 +27,7 @@ node {
         options: {
           [mediapipe.ConstantSidePacketCalculatorOptions.ext]: {
             packet {
-              string_value: "mediapipe/modules/selfie_segmentation/selfie_segmentation.tflite"
+              string_value: "selfie_segmentation.tflite"
             }
           }
         }
@@ -37,7 +37,7 @@ node {
         options: {
           [mediapipe.ConstantSidePacketCalculatorOptions.ext]: {
             packet {
-              string_value: "mediapipe/modules/selfie_segmentation/selfie_segmentation_landscape.tflite"
+              string_value: "selfie_segmentation_landscape.tflite"
             }
           }
         }
